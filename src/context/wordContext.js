@@ -13,6 +13,7 @@ const WordProvider = ({ children }) => {
   const [wrongResults, setWrongResults] = useState([]);
   const [time, setTime] = useState(30);
   const [disabled, setDisabled] = useState(true);
+  const [animated, setAnimated] = useState(null);
 
   const randomWord = Math.round(Math.random() * word.length);
 
@@ -55,11 +56,19 @@ const WordProvider = ({ children }) => {
       setTimeout(() => setTime(time - 1), 1000);
     } else if (disabled) {
       setTime(30);
+      // setAnimated(null);
     } else if (time === 0) {
-      setDisabled(disabled);
+      setDisabled(!disabled);
       setInputValue("Time is over");
     }
+    if (time <= 10 ) {
+      setAnimated("animation 1s infinite");
+    }
   }, [time, disabled]);
+
+  // useEffect(() => {
+    
+  // }, [time, disabled]);
 
   return (
     <WordContext.Provider
@@ -75,7 +84,8 @@ const WordProvider = ({ children }) => {
         correctResults,
         wrongResults,
         correctCount,
-        wrongCount
+        wrongCount,
+        animated
       }}
     >
       {children}
@@ -84,4 +94,3 @@ const WordProvider = ({ children }) => {
 };
 
 export default WordProvider;
-

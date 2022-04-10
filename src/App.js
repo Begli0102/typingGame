@@ -10,7 +10,7 @@ const Application = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-
+  margin-top: 30px;
   @media (max-width: 1210px) {
     flex-direction: column;
     align-items: center;
@@ -21,7 +21,7 @@ const Application = styled.div`
 const Container = styled.div`
   width: 100%;
   max-width: 600px;
-  margin:30px;
+  margin: 30px;
   display: flex;
   justify-content: space-between;
 
